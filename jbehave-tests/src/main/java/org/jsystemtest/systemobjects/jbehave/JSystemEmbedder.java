@@ -70,7 +70,11 @@ public class JSystemEmbedder extends Embedder {
 	@Override
 	public void runStoriesAsPaths(List<String> storyPaths) {
 		List<String> sotriesInClasspath = addToClassPath(storyPaths);
-		super.runStoriesAsPaths(sotriesInClasspath);
+		try {
+			super.runStoriesAsPaths(sotriesInClasspath);
+		} catch (RunningStoriesFailed e) {
+			report.report("Failure in at least one of the stories steps", e.getMessage(), Reporter.FAIL);
+		}
 		report.addLink("JBehave reports", "jbehave");
 
 	}
