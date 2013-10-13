@@ -17,10 +17,10 @@
     </target>
     <target name="t0">
         <jsystem showoutput="true">
-            <sysproperty key="jsystem.uuid" value="f60f0314-8a31-4cc2-9bf8-416ef519aede"/>
+            <sysproperty key="jsystem.uuid" value="8111f45c-8425-44ea-be73-d7ad2e5bb1ab"/>
             <sysproperty key="jsystem.parent.uuid" value="${jsystem.parent.uuid}.${jsystem.uuid}"/>
             <sysproperty key="jsystem.parent.name" value="${jsystem.parent.name}.${ant.project.name}"/>
-            <test name="il.co.topq.auto.JBehaveExecutor.runStories"/>
+            <test name="il.co.topq.auto.tests.JBehaveExecutor.runStory"/>
         </jsystem>
     </target>
 </project>
