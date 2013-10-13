@@ -1,6 +1,4 @@
-package il.co.topq.auto.jbehave;
-
-import il.co.topq.auto.utils.BeanUtils;
+package org.jsystemtest.systemobjects.jbehave;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +24,7 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.SilentStepMonitor;
+import org.jsystemtest.systemobjects.utils.BeanUtils;
 
 /**
  * Embedding JBheave execution engine with the JSystem framework

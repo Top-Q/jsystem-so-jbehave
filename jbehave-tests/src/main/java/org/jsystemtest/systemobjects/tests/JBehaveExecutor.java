@@ -1,7 +1,4 @@
-package il.co.topq.auto.tests;
-
-import il.co.topq.auto.jbehave.JSystemEmbedder;
-import il.co.topq.auto.utils.BeanUtils;
+package org.jsystemtest.systemobjects.tests;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,11 +12,13 @@ import jsystem.framework.report.Reporter;
 import junit.framework.SystemTestCase4;
 
 import org.jbehave.core.embedder.Embedder;
+import org.jsystemtest.systemobjects.jbehave.JSystemEmbedder;
+import org.jsystemtest.systemobjects.utils.BeanUtils;
 import org.junit.Test;
 
 public class JBehaveExecutor extends SystemTestCase4 {
 
-	private String[] stepsPackages = { "il.co.topq.auto.steps" };
+	private String[] stepsPackages = { "org.jsystemtest.systemobjects.steps" };
 	private String[] storyPaths = { "my.story" };
 	private File storyFile;
 
@@ -59,7 +58,7 @@ public class JBehaveExecutor extends SystemTestCase4 {
 			return;
 		}
 		if (null == storyFile || !storyFile.exists()) {
-			report.report("Story " + storyFile.getAbsolutePath() + " was not found - skipping execution",
+			report.report("Story was not found - skipping execution",
 					Reporter.WARNING);
 			return;
 		}

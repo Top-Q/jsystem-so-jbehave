@@ -14,13 +14,22 @@
     <taskdef classname="com.aqua.anttask.jsystem.JSystemSetAntProperties" name="jsystemsetantproperties"/>
     <target name="execute scenario">
         <antcallback target="t0"/>
+        <antcallback target="t1"/>
     </target>
     <target name="t0">
         <jsystem showoutput="true">
-            <sysproperty key="jsystem.uuid" value="8111f45c-8425-44ea-be73-d7ad2e5bb1ab"/>
+            <sysproperty key="jsystem.uuid" value="495f1c27-869b-4dce-80f3-404be02b54a1"/>
             <sysproperty key="jsystem.parent.uuid" value="${jsystem.parent.uuid}.${jsystem.uuid}"/>
             <sysproperty key="jsystem.parent.name" value="${jsystem.parent.name}.${ant.project.name}"/>
-            <test name="il.co.topq.auto.tests.JBehaveExecutor.runStory"/>
+            <test name="org.jsystemtest.systemobjects.tests.JBehaveExecutor.runStories"/>
+        </jsystem>
+    </target>
+    <target name="t1">
+        <jsystem showoutput="true">
+            <sysproperty key="jsystem.uuid" value="c767576e-a313-4a76-a9d1-c9a85acba193"/>
+            <sysproperty key="jsystem.parent.uuid" value="${jsystem.parent.uuid}.${jsystem.uuid}"/>
+            <sysproperty key="jsystem.parent.name" value="${jsystem.parent.name}.${ant.project.name}"/>
+            <test name="org.jsystemtest.systemobjects.tests.JBehaveExecutor.runStory"/>
         </jsystem>
     </target>
 </project>

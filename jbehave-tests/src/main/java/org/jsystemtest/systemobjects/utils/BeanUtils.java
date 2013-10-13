@@ -1,4 +1,4 @@
-package il.co.topq.auto.utils;
+package org.jsystemtest.systemobjects.utils;
 
 import java.io.File;
 import java.io.IOException;

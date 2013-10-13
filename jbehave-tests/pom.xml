@@ -1,19 +1,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>il.co.topq.auto</groupId>
+	<groupId>org.jsystemtest.systemobjects</groupId>
 	<artifactId>jbehave-tests</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
+	<properties>
+		<topq.repository.rootUrl>http://maven.top-q.co.il</topq.repository.rootUrl>
+	</properties>
+	<distributionManagement>
+		<repository>
+			<id>topq</id>
+			<name>RepositoryProxy</name>
+			<url>${topq.repository.rootUrl}/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>topq</id>
+			<name>RepositoryProxy</name>
+			<url>${topq.repository.rootUrl}/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<repositories>
 		<repository>
 			<id>top-q</id>
-			<url>http://maven.top-q.co.il/content/groups/public</url>
+			<url>${topq.repository.rootUrl}/content/groups/public</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>top-q</id>
-			<url>http://maven.top-q.co.il/content/groups/public</url>
+			<url>${topq.repository.rootUrl}/content/groups/public</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
