@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jsystemtest.systemobjects</groupId>
 	<artifactId>jbehave-tests</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<properties>
 		<topq.repository.rootUrl>http://maven.top-q.co.il</topq.repository.rootUrl>
 	</properties>
@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.jsystemtest.systemobjects</groupId>
 			<artifactId>jbehave-so</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 	<build>
