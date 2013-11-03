@@ -37,10 +37,11 @@
 			<artifactId>jsystemApp</artifactId>
 			<version>6.0.02</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>4.0-beta-3</version>
+			<groupId>org.jsystemtest.systemobjects</groupId>
+			<artifactId>jbehave-so</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>

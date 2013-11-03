@@ -18,6 +18,9 @@ import org.jbehave.core.embedder.EmbedderControls;
 import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
+import org.jbehave.core.parsers.RegexStoryParser;
+import org.jbehave.core.parsers.StoryParser;
+import org.jbehave.core.parsers.gherkin.GherkinStoryParser;
 import org.jbehave.core.reporters.CrossReference;
 import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
@@ -34,13 +37,24 @@ import org.jsystemtest.systemobjects.utils.BeanUtils;
  */
 public class JSystemEmbedder extends Embedder {
 
+	public enum StoryParserType {
+		REGEX, GHERKIN,
+	}
+
+	private StoryParserType parserType;
+
 	protected Reporter report = ListenerstManager.getInstance();
 
 	private final List<Class<?>> stepsClasses;
 
-	public JSystemEmbedder(List<Class<?>> stepsClasses) {
+	public JSystemEmbedder(List<Class<?>> stepsClasses, StoryParserType parserType) {
 		super();
+		this.parserType = parserType;
 		this.stepsClasses = stepsClasses;
+	}
+
+	public JSystemEmbedder(List<Class<?>> stepsClasses) {
+		this(stepsClasses, StoryParserType.REGEX);
 	}
 
 	@Override
@@ -51,7 +65,20 @@ public class JSystemEmbedder extends Embedder {
 	@Override
 	public Configuration configuration() {
 		Class<? extends JSystemEmbedder> embedderClass = this.getClass();
+		StoryParser parser = null;
+		switch (parserType) {
+		case GHERKIN:
+			parser = new GherkinStoryParser();
+			break;
+		case REGEX:
+			parser = new RegexStoryParser();
+			break;
+		default:
+			parser = new RegexStoryParser();
+
+		}
 		return new MostUsefulConfiguration()
+				.useStoryParser(parser)
 				.useStoryLoader(new LoadFromClasspath(embedderClass.getClassLoader()))
 				.useStoryReporterBuilder(
 						new StoryReporterBuilder()

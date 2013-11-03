@@ -13,6 +13,7 @@ import junit.framework.SystemTestCase4;
 
 import org.jbehave.core.embedder.Embedder;
 import org.jsystemtest.systemobjects.jbehave.JSystemEmbedder;
+import org.jsystemtest.systemobjects.jbehave.JSystemEmbedder.StoryParserType;
 import org.jsystemtest.systemobjects.utils.BeanUtils;
 import org.junit.Test;
 
@@ -20,6 +21,7 @@ public class JBehaveExecutor extends SystemTestCase4 {
 
 	private String[] stepsPackages = { "org.jsystemtest.systemobjects.steps" };
 	private String[] storyPaths = { "my.story" };
+	private StoryParserType parserType = StoryParserType.REGEX;
 	private File storyFile;
 
 	/**
@@ -27,7 +29,8 @@ public class JBehaveExecutor extends SystemTestCase4 {
 	 * specified package.
 	 */
 	@Test
-	@TestProperties(name = "Run multiple JBehave stories", paramsInclude = { "stepsPackages", "storyPaths" })
+	@TestProperties(name = "Run multiple JBehave stories", paramsInclude = { "stepsPackages", "storyPaths",
+			"parserType" })
 	public void runStories() {
 		// Checking inputs
 		if (null == stepsPackages || stepsPackages.length == 0) {
@@ -50,7 +53,7 @@ public class JBehaveExecutor extends SystemTestCase4 {
 	 * specified package.
 	 */
 	@Test
-	@TestProperties(name = "Run a single JBehave story", paramsInclude = { "stepsPackages", "storyFile" })
+	@TestProperties(name = "Run a single JBehave story", paramsInclude = { "stepsPackages", "storyFile", "parserType" })
 	public void runStory() throws IOException {
 		// Checking inputs
 		if (null == stepsPackages || stepsPackages.length == 0) {
@@ -58,8 +61,7 @@ public class JBehaveExecutor extends SystemTestCase4 {
 			return;
 		}
 		if (null == storyFile || !storyFile.exists()) {
-			report.report("Story was not found - skipping execution",
-					Reporter.WARNING);
+			report.report("Story was not found - skipping execution", Reporter.WARNING);
 			return;
 		}
 
@@ -96,6 +98,15 @@ public class JBehaveExecutor extends SystemTestCase4 {
 	@ParameterProperties(description = "JBehave story file")
 	public void setStoryFile(File storyFile) {
 		this.storyFile = storyFile;
+	}
+
+	public StoryParserType getParserType() {
+		return parserType;
+	}
+
+	@ParameterProperties(description = "Which parser type to use")
+	public void setParserType(StoryParserType parserType) {
+		this.parserType = parserType;
 	}
 
 }
