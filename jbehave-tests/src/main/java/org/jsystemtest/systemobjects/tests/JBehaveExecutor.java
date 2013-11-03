@@ -14,6 +14,7 @@ import junit.framework.SystemTestCase4;
 import org.jbehave.core.embedder.Embedder;
 import org.jsystemtest.systemobjects.jbehave.JSystemEmbedder;
 import org.jsystemtest.systemobjects.jbehave.JSystemEmbedder.StoryParserType;
+import org.jsystemtest.systemobjects.steps.MySteps;
 import org.jsystemtest.systemobjects.utils.BeanUtils;
 import org.junit.Test;
 
@@ -71,6 +72,19 @@ public class JBehaveExecutor extends SystemTestCase4 {
 		storyList.add(storyFile.getCanonicalPath());
 		embedder.runStoriesAsPaths(storyList);
 
+	}
+	
+	
+	@Test
+	public void runJBehaveStory(){
+		List<Class<?>> stepClasses = new ArrayList<Class<?>>();
+		stepClasses.add(MySteps.class);
+		Embedder embedder = new JSystemEmbedder(stepClasses);
+		
+		List<String> stories = new ArrayList<String>();
+		stories.add("my.story");
+		embedder.runStoriesAsPaths(stories);
+		
 	}
 
 	public String[] getStepsPackages() {
